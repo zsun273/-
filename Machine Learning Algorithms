@@ -1,0 +1,28 @@
+分类问题用什么模型
+
+1. 决策树分类(Decision Tree):
+    - 概括： 以树状结构构建分类模型， 通过将数据集不断拆分为更小的子集来使decision tree不断生长， 最终长成具有decision nodes和leaf nodes的数。用leaf来表示表示最终的分类结果。
+            特征的分类能力： 用熵entropy来表示。Which means 随机变量不确定性的度量。 不确定性越大， entropy越大。
+                如何计算entropy： 暂略
+            信息增益 information gain： 得知 特征X 的信息使得 分类Y 的不确定性减少 (entropy decrease) 的程度。
+                 Gain(A) = H(D) - H(D|A)
+            
+            决策树归纳算法： 都是greedy algorithm, top down approach.
+            ID3 (Iterative Dichotomiser 3): 从root开始， 对internal node计算所有可能的information gain， 选择gain最大的特征作为这个internal node的特征。
+                                                      使用上述方法Iteratively， 构建decision tree， 直到所有information gain都变得很小。
+                                                     
+            C4.5 Algorithm: 使用信息增益比来进行特征选择。
+            CART Algorithm: Classification and regression tree. 假设决策树是一个二叉树， 通过递归的二分每个特征，将特征划分为有限个单元，并在这些单元上确定预测的概率分布。
+            
+            决策树的剪枝 prunning:
+            当数据分的过细时，虽然在training set上表现比较好，但是在别的新数据上可能会表现不佳，出现过度拟合的状况。
+            Solution 1: When entropy < threshold: stop creating branches
+            Solution 2: After creating the whole decision tree, remove extra nodes. (Prunning).
+            
+    - 总结： decision tree易于理解，直观。可直接处理 categorical data， 甚至可以处理data with missing entries.
+            However, decision tree cannot handle continuous varaiable, 不好处理错综复杂的组合。
+            
+            
+            
+                 
+           
