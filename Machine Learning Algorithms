@@ -21,6 +21,24 @@
             
     - 总结： decision tree易于理解，直观。可直接处理 categorical data， 甚至可以处理data with missing entries.
             However, decision tree cannot handle continuous varaiable, 不好处理错综复杂的组合。
+
+
+
+2. 随机森林 Random Forest, belongs to (Bagging) bootstrap aggregation
+    - 概括： 随机森林由很多independent的决策树构成。进行分类任务时，新的输入样本，让森林中的每一棵决策树进行分类并返回分类结果， 哪一种分类结果最多，随机森林就会把这个结果当作最终的结果。
+            Procedure: 
+            1. 一个样本容量为N的样本，有放回的抽取N次，每次抽取一个，最终形成N个样本，用这N个样本作为决策树root的样本来训练决策树。
+            2. 当每个样本有M个特征时，在决策树每个internal node进行分裂时，随机从这M个特征中取出一个m大小的subset，（m << M. 然后从这m个特征中采取某种策略（information gain）来选择一个特征作为该node的分裂特征。
+            3. 决策树形成过程中的每个node分裂都按照2的步骤。
+            重复1-3，即可生成随机森林。
+     
+     - 总结：
+     优点： 可以生成特征很多的数据； 可以判断不同特征的重要程度； 可以判断不同特征间的相互影响。
+            不容易过度拟合，训练速度快，实现简单。
+     缺点： 在某些noise较大的分类或者回归问题上会过度拟合。
+            对于有不同取值的特征的数据，取值划分较多的特征会对随机森林产生更大的影响，所以随机森林在这种数据上对不同特征的weight不可信。
+     
+     
             
             
             
